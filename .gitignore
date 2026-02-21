@@ -1,0 +1,15 @@
+# Society's Secrets: Do not let the world see the weight of the dependencies
+node_modules/
+.env
+build/
+dist/
+.DS_Store
+
+# DevOps & Terraform secrets
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+
+# Smart Contract artifacts
+artifacts/
+cache/
