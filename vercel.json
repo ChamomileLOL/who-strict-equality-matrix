@@ -1,6 +1,6 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/pwa_frontend/pwa_server.js" }
+    { "source": "/(.*)", "destination": "/api/index.js" }
   ]
 }
