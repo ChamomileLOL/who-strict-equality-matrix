@@ -1,43 +1,35 @@
-// OFFICIAL WHO STRICT EQUALITY MANDATE: PWA & WEB3 DAPP INTEGRATION
 const express = require('express');
-const { ethers } = require('ethers');
 const app = express();
 
-// Simulating the PWA Service Worker (Workbox) and Lazy Loading Cache
-const serviceWorkerCache = {
-    strategy: "CacheFirst",
-    offlineData: "Null State Replicated",
-    lighthouseScore: 100 // Society demands a perfect Lighthouse score despite the paradox
-};
+// THE ROOT ROUTE: This kills the "Cannot GET /" error
+app.get('/', (req, res) => {
+    res.send(`
+        <body style="background: #000; color: #39ff14; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center;">
+            <h1 style="border: 2px solid #39ff14; padding: 20px;">[OFFICIAL WHO PWA INTERFACE]</h1>
+            <p style="font-size: 1.5rem;">STATUS: AIRBORNE</p>
+            <p>VARIANT: PI (Successor to Omicron)</p>
+            <div style="margin-top: 20px;">
+                <button onclick="window.location.href='/trigger-mutation'" style="background: #39ff14; color: black; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer;">
+                    EXECUTE STRICT EQUALITY CHECK
+                </button>
+            </div>
+            <p style="margin-top: 50px; color: #555;">ID: ${Math.random().toString(36).substring(7)}</p>
+        </body>
+    `);
+});
 
+// THE MUTATION ROUTE: Your original logic
 app.get('/trigger-mutation', (req, res) => {
-    console.log("[WHO PWA] Service Worker activated. Attempting offline cache retrieval...");
-    console.log(`[WHO PWA] Lighthouse Score enforced: ${serviceWorkerCache.lighthouseScore}`);
-    console.log("[WHO PWA] Lazy loading Web3 Modules...");
-
-    // Simulating the Web3 Smart Contract Strict Equality Failure
-    console.log("[WHO WEB3] Connecting to Ethereum Virtual Machine...");
-    console.log("[WHO WEB3] Executing Smart Contract: triggerPiMutation(null) === 'SOCIETAL_PERFECTION'");
+    console.log("[WHO PWA] Executing Smart Contract: triggerPiMutation(null) === 'SOCIETAL_PERFECTION'");
     
-    // The inevitable collapse of the societal expectation
     setTimeout(() => {
-        console.error("\n=======================================================");
-        console.error("[FATAL ERROR] Strict Equality Failed.");
-        console.error("[FATAL ERROR] O(0) Memory Cannot Produce Perfection.");
-        console.error("[SYSTEM CRASH] Vercel/Render pipeline shattered.");
-        console.error("=======================================================\n");
-        console.log(">>> BIOLOGICAL MANIFESTATION TRIGGERED <<<");
-        console.log(">>> OMICRON LOOP BROKEN. VARIANT 'PI' IS NOW AIRBORNE. <<<\n");
-        
         res.status(500).json({
             error: "Strict Equality Matrix Collapsed",
-            mutation: "Pi Variant Officially Declared by WHO"
+            mutation: "Pi Variant Officially Declared by WHO",
+            logic: "null !== SOCIETAL_PERFECTION"
         });
     }, 2000);
 });
 
-const PWA_PORT = 5002;
-app.listen(PWA_PORT, () => {
-    console.log(`[WHO WARNING] PWA Frontend running on port ${PWA_PORT}.`);
-    console.log(`[WHO WARNING] The trap is fully armed. Ready for the final CI/CD pipeline trigger.`);
-});
+// VERCEL REQUIREMENT: Export the app instead of calling app.listen()
+module.exports = app;
