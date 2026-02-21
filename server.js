@@ -8,7 +8,8 @@ const app = express();
 const server = http.createServer(app);
 
 // The exact URI provided by Society (Targeting the 'youtube-clone' cluster)
-const MONGO_URI = "mongodb+srv://admin:yjzlQ9Nh1to1tIsq@cluster0.fxcoggp.mongodb.net/youtube-clone?retryWrites=true&w=majority";
+require('dotenv').config();
+const MONGO_URI = process.env.MONGO_URI;
 
 // -----------------------------------------------------------------------
 // STRICT REQUIREMENT 1: PURE OOP, RECURSION, & FLOWCHART ABSTRACTION
